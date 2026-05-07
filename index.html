@@ -990,10 +990,7 @@
           <a href="https://github.com/Girivardhan-Reddy/oral-cancer-detection-ai" target="_blank" class="btn btn-primary">
             <i class="fab fa-github"></i> GitHub
           </a>
-          <a href="#" class="btn btn-ghost">
-            <i class="fas fa-external-link-alt"></i> Live Demo
-          </a>
-        </div>
+                  </div>
       </div>
     </div>
 
@@ -1107,7 +1104,7 @@
             <span class="tag tag-green">Python</span>
           </div>
           <div class="pc-links">
-            <a href="https://github.com/Girivardhan-Reddy/food-calories-estimation-ai" target="_blank" class="pc-link">
+            <a href="https://github.com/Girivardhan-Reddy/food-calorie-estimation-ai" target="_blank" class="pc-link">
               <i class="fab fa-github"></i> Code
             </a>
           </div>
@@ -1134,7 +1131,7 @@
             <span class="tag tag-pink">Deep Learning</span>
           </div>
           <div class="pc-links">
-            <a href="https://github.com/Girivardhan-Reddy/virtual-try-on-ai" target="_blank" class="pc-link">
+            <a href="https://github.com/Girivardhan-Reddy/virtual-tryon-ai" target="_blank" class="pc-link">
               <i class="fab fa-github"></i> Code
             </a>
             <a href="https://ai-tryroom.onrender.com" target="_blank" class="pc-link live">
@@ -1187,8 +1184,7 @@
     <!-- ════════════════════════════════════
          EXTRA PROJECTS (shown on "Load More")
     ════════════════════════════════════ -->
-    <div class="extra-grid" id="extra-grid">
-
+<div class="extra-grid" id="extra-projects">
       <!-- 8. Power Optimization System -->
       <div class="project-card" data-category="ai">
         <span class="pc-cat-badge ai">AI/ML</span>
@@ -1398,7 +1394,7 @@
             <span class="tag tag-green">JS</span>
           </div>
           <div class="pc-links">
-            <a href="https://github.com/Girivardhan-Reddy/smart-traffic-management-system" target="_blank" class="pc-link">
+            <a href="https://github.com/Girivardhan-Reddy/Smart-Traffic-Management-System-" target="_blank" class="pc-link">
               <i class="fab fa-github"></i> Code
             </a>
           </div>
@@ -1533,7 +1529,7 @@
             <span class="tag tag-pink">Tesseract OCR</span>
           </div>
           <div class="pc-links">
-            <a href="https://github.com/Girivardhan-Reddy/number-plate-recognition-system" target="_blank" class="pc-link">
+            <a href="https://github.com/Girivardhan-Reddy/number-plate-recognition" target="_blank" class="pc-link">
               <i class="fab fa-github"></i> Code
             </a>
           </div>
@@ -1596,16 +1592,48 @@
 
     </div><!-- /#extra-grid -->
 
-    <!-- ── SHOW MORE BUTTON ── -->
-    <div class="show-more-wrap reveal" id="show-more-wrap">
-      <button class="btn-show-more" id="show-more-btn" aria-expanded="false">
-        <i class="fas fa-plus btn-icon" id="show-more-icon"></i>
-        <span id="show-more-text">Show More Projects</span>
-        <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--muted);margin-left:4px;" id="show-more-count">(+18 more)</span>
-      </button>
-      <span class="show-more-hint" id="show-more-hint">Click to reveal all 25 projects</span>
-    </div>
+    <!-- ── SHOW MORE BUTTON ───────────────────── -->
 
+<div class="show-more-wrap reveal" id="show-more-wrap">
+
+  <button
+    class="btn-show-more"
+    id="show-more-btn"
+    type="button"
+    aria-expanded="false"
+  >
+
+    <i
+      class="fas fa-plus btn-icon"
+      id="show-more-icon"
+    ></i>
+
+    <span id="show-more-text">
+      Show More Projects
+    </span>
+
+    <span
+      id="show-more-count"
+      style="
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--muted);
+        margin-left: 4px;
+      "
+    >
+      (+18 more)
+    </span>
+
+  </button>
+
+  <span
+    class="show-more-hint"
+    id="show-more-hint"
+  >
+    Click to reveal all 25 projects
+  </span>
+
+</div>
   </div><!-- /.container -->
 </section>
 <!-- ═══════════════════════════════════════════════════
@@ -2228,6 +2256,124 @@ document.addEventListener(
   "DOMContentLoaded",
   loadGitHubStats
 );
+
+/* ── SKILLS PROGRESS ANIMATION ───────────────── */
+
+const skillObserver = new IntersectionObserver((entries) => {
+
+  entries.forEach((entry) => {
+
+    if (entry.isIntersecting) {
+
+      const fills = entry.target.querySelectorAll(".sc-fill");
+
+      fills.forEach((fill) => {
+
+        const level = fill.getAttribute("data-level");
+
+        fill.style.setProperty("--fill", level);
+
+        fill.parentElement.parentElement.classList.add("animate");
+      });
+
+      skillObserver.unobserve(entry.target);
+    }
+  });
+
+}, {
+  threshold: 0.2
+});
+
+
+document.querySelectorAll(".skills-panel").forEach((panel) => {
+  skillObserver.observe(panel);
+});
+/* ── SHOW MORE PROJECTS ───────────────────── */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const showMoreBtn =
+    document.getElementById("show-more-btn");
+
+  const extraProjects =
+    document.getElementById("extra-projects");
+
+  const showMoreText =
+    document.getElementById("show-more-text");
+
+  const showMoreIcon =
+    document.getElementById("show-more-icon");
+
+  const showMoreCount =
+    document.getElementById("show-more-count");
+
+  const showMoreHint =
+    document.getElementById("show-more-hint");
+
+
+  if (showMoreBtn && extraProjects) {
+
+    showMoreBtn.addEventListener("click", () => {
+
+      // Toggle Open Class
+      extraProjects.classList.toggle("open");
+
+      // Button State
+      showMoreBtn.classList.toggle("open");
+
+      const isOpen =
+        extraProjects.classList.contains("open");
+
+
+      if (isOpen) {
+
+        // OPEN STATE
+        showMoreText.innerText =
+          "Show Less Projects";
+
+        showMoreIcon.className =
+          "fas fa-minus btn-icon";
+
+        showMoreCount.innerText = "";
+
+        showMoreHint.innerText =
+          "All projects are now visible";
+
+        showMoreBtn.setAttribute(
+          "aria-expanded",
+          "true"
+        );
+
+      } else {
+
+        // CLOSED STATE
+        showMoreText.innerText =
+          "Show More Projects";
+
+        showMoreIcon.className =
+          "fas fa-plus btn-icon";
+
+        showMoreCount.innerText =
+          "(+18 more)";
+
+        showMoreHint.innerText =
+          "Click to reveal all 25 projects";
+
+        showMoreBtn.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        // Smooth Scroll Back
+        showMoreBtn.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+      }
+    });
+  }
+
+});
 </script>
 </body>
 </html>
